@@ -1,4 +1,4 @@
----------- 01. Create Tables ----------
+#---------- 01. Create Tables ----------
 
 CREATE TABLE minions(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -12,7 +12,7 @@ CREATE TABLE towns(
 );
 
 
----------- 02. Alter Minions Table ----------
+#---------- 02. Alter Minions Table ----------
 
 ALTER TABLE `minions` ADD COLUMN `town_id` INT NOT NULL;
 
@@ -21,7 +21,7 @@ ADD CONSTRAINT fk_minions_towns
 FOREIGN KEY (`town_id`) REFERENCES `towns`(`id`);
 
 
----------- 03. Insert Records in Both Tables ----------
+#---------- 03. Insert Records in Both Tables ----------
 
 INSERT INTO `towns`(id, name) VALUES (1, 'Sofia');
 INSERT INTO `towns`(id, name) VALUES (2, 'Plovdiv');
@@ -32,18 +32,18 @@ INSERT INTO `minions`(id, name, age, town_id) VALUES (2, 'Bob', 15, 3);
 INSERT INTO `minions`(id, name, age, town_id) VALUES (3, 'Steward', NULL, 2);
 
 
----------- 04. Truncate Table Minions ----------
+#---------- 04. Truncate Table Minions ----------
 
 TRUNCATE TABLE `minions`;
 
 
----------- 05. Drop All Tables ----------
+#---------- 05. Drop All Tables ----------
 
 DROP TABLE `minions`;
 DROP TABLE `towns`;
 
 
----------- 06. Create Table People ----------
+#---------- 06. Create Table People ----------
 
 CREATE TABLE `people`(
 `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -63,7 +63,7 @@ INSERT INTO `people`(name, gender, birthdate) VALUES('Trifon', 'M', '1993-06-15'
 INSERT INTO `people`(name, gender, birthdate) VALUES('Gabriela', 'F', '1993-05-25');
 
 
----------- 07. Create Table Users ----------
+#---------- 07. Create Table Users ----------
 
 CREATE TABLE `users`(
 `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -82,7 +82,7 @@ VALUES('myaccount', 'password'),
 ('myaccount', 'password');
 
 
----------- 08. Change Primary Key ----------
+#---------- 08. Change Primary Key ----------
 
 ALTER TABLE users
   MODIFY id INT NOT NULL;
@@ -92,14 +92,14 @@ ALTER TABLE users
   ADD CONSTRAINT pk_users PRIMARY KEY (id,username);
 
 
----------- 09. Set Default Value of a Field ----------
+#---------- 09. Set Default Value of a Field ----------
 
 ALTER TABLE `users`
 MODIFY COLUMN `last_login_time` TIMESTAMP
 DEFAULT CURRENT_TIMESTAMP;
 
 
----------- 10. Set Unique Field ----------
+#---------- 10. Set Unique Field ----------
 
 ALTER TABLE `users`
 DROP PRIMARY KEY,
@@ -109,7 +109,7 @@ ADD CONSTRAINT uq_username
 UNIQUE(username);
 
 
----------- 11. Movies Database ----------
+#---------- 11. Movies Database ----------
 
 CREATE TABLE `directors`(
 `id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -167,7 +167,7 @@ INSERT INTO `categories`(category_name) VALUES('Cool');
 INSERT INTO `categories`(category_name) VALUES('Cool');
 
 
----------- 12. Car Rental Database ----------
+#---------- 12. Car Rental Database ----------
 
 create table categories
 (
@@ -241,7 +241,7 @@ insert into rental_orders(employee_id,car_id)
 values (1, 1),(1, 2), (2, 3);
 
 
----------- 14. Basic Insert ----------
+#---------- 14. Basic Insert ----------
 
 INSERT INTO `towns`(name) VALUE('Sofia'),
 ('Plovdiv'),
@@ -265,14 +265,14 @@ VALUES('Georgi', 'Terziev', 'Ivanov', 'CEO', 2, '2007-12-09', 3000.00);
 INSERT INTO `employees`(first_name, middle_name, last_name, job_title, department_id, hire_date, salary)
 VALUES('Peter', 'Pan', 'Pan', 'Intern', 3, '2016-08-28', 599.88);
 
----------- 15. Basic Select All Fields ----------
+#---------- 15. Basic Select All Fields ----------
 
 SELECT * FROM `towns`;
 SELECT * FROM `departments`;
 SELECT * FROM `employees`;
 
 
----------- 16. Basic Select All Fields and Order Them ----------
+#---------- 16. Basic Select All Fields and Order Them ----------
 
 SELECT * FROM `towns`
 ORDER BY name;
@@ -281,21 +281,21 @@ ORDER BY name;
 SELECT * FROM `employees`
 ORDER BY salary DESC;
 
----------- 17. Basic Select Some Fields ----------
+#---------- 17. Basic Select Some Fields ----------
 
 SELECT towns.name FROM towns ORDER BY name;
 SELECT departments.name FROM departments ORDER BY name;
 SELECT e.first_name, e.last_name, e.job_title, e.salary FROM employees AS e ORDER BY salary DESC;
 
 
----------- 18. Increase Employees Salary ----------
+#---------- 18. Increase Employees Salary ----------
 
 UPDATE `employees`
 SET `salary` = `salary` * 1.1;
 SELECT employees.salary FROM employees;
 
 
----------- 19. Decrease Tax Rate ----------
+#---------- 19. Decrease Tax Rate ----------
 
 UPDATE `payments`
 SET `tax_rate` = `tax_rate` * 0.97;
@@ -303,6 +303,6 @@ SET `tax_rate` = `tax_rate` * 0.97;
 SELECT `tax_rate` FROM `payments`;
 
 
----------- 20. Delete All Records ----------
+#---------- 20. Delete All Records ----------
 
 TRUNCATE TABLE `occupancies`;
